@@ -1,7 +1,9 @@
 # Frequently Asked Questions.
 
+## Setup:
 
-## Setup: 
+- Read the setup instructions linked on the website and follow the installation closely
+- Read `vs-code-server-setup.txt` 
 
 ### Regarding bashprofile and bashrc:
 - Problem: conda: Befehl nicht gefunden / Command not found
@@ -46,10 +48,10 @@ fi
 - **Steps to use shared conda environment**
 - edit your `~/.condarc` and add the following lines:
 ```envs_dirs:
-  - /project/cv-ws2122/shared-data1/miniconda3/envs
+  - /project/cv-ws2223/shared-data1/miniconda3/envs
 ```
 - activate our environment: `conda activate cvenv`
-- check if the output of  `which python` equals `/project/cv-ws2122/shared-data1/miniconda3/envs/cvenv/bin/python`
+- check if the output of  `which python` equals `/project/cv-ws2223/shared-data1/miniconda3/envs/cvenv/bin/python`
 
 ### Recommended: vscode - IDE for working on pool machines
 #### steps to install vs-code (on linux without sudo)
@@ -72,7 +74,7 @@ fi
 - e.g. replace <username> with your username: ssh <username>@login.informatik.uni-freiburg.de
 - then enter password, press f1 again and connect to host, and voila, you're on the tf pool
 - click on open folder and enter the path to your project
-- `/project/cv-ws2122/<username>/cv-exercises/`
+- `/project/cv-ws2223/<username>/cv-exercises/`
 - (in order to have the cv-exercises folder you need to do a `git clone https://github.com/lmb-freiburg/cv-exercises.git`)
 
 #### VSCode Shortcuts:
