@@ -3,7 +3,6 @@
 ## Setup:
 
 - Read the setup instructions linked on the website and follow the installation closely
-- Read `vs-code-server-setup.txt` 
 
 ### Regarding bashprofile and bashrc:
 - Problem: conda: Befehl nicht gefunden / Command not found
@@ -18,6 +17,7 @@ fi
 ```
 
 ### Access data options
+
 - work on pool pcs
 - copy to local via vscode (right click -> download)
 - scp
@@ -54,7 +54,11 @@ fi
 - check if the output of  `which python` equals `/project/cv-ws2223/shared-data1/miniconda3/envs/cvenv/bin/python`
 
 ### Recommended: vscode - IDE for working on pool machines
-#### steps to install vs-code (on linux without sudo)
+
+#### VS Code server setup
+
+steps to install vs-code (on linux without sudo)
+
 - download https://code.visualstudio.com/docs/?dv=linux64
 - you can probably skip the next steps if you installed via the package manager
 - copy to <path_to_bin_and_install>/install
@@ -65,6 +69,7 @@ fi
 - add to your bash to call vscode from everywhere: `export PATH="<path_to_bin_and_install>/bin:$PATH"`
 
 #### VSCode - remote
+
 - follow the steps in https://code.visualstudio.com/docs/remote/ssh
 - open it with vscode from any terminal
 - hit crtl p and paste `ext install ms-vscode-remote.vscode-remote-extensionpack`
@@ -78,6 +83,7 @@ fi
 - (in order to have the cv-exercises folder you need to do a `git clone https://github.com/lmb-freiburg/cv-exercises.git`)
 
 #### VSCode Shortcuts:
+
 	- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 	- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf
 	- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
@@ -91,6 +97,7 @@ fi
 		complaints about not knowing numpy will be gone
 
 ### Remote SSH in vscode directly to a pool machine
+
 Instead of connecting vscode to the login node via ssh and then connect in the terminal to one of the pool machines, one can directly connect via ssh to a pool machine as follows:
 - Crtl+shift+p: then Remote-SSH: Open SSH Configuration File and choose your loca config file.
 - Usually you will see an entry for every server like:
