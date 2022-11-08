@@ -44,14 +44,14 @@ fi
 
 ### use shared conda environment
 - your conda installation takes up a lot of space. In our case >5GB, which might exceed your storage quota.
-- We share our environment `cvenv` which is sufficient to run the example solutions
+- We share our environment `mycvenv` which is sufficient to run the example solutions
 - **Steps to use shared conda environment**
 - edit your `~/.condarc` and add the following lines:
 ```envs_dirs:
   - /project/cv-ws2223/shared-data1/miniconda3/envs
 ```
-- activate our environment: `conda activate cvenv`
-- check if the output of  `which python` equals `/project/cv-ws2223/shared-data1/miniconda3/envs/cvenv/bin/python`
+- activate our environment: `conda activate mycvenv`
+- check if the output of  `which python` equals `/project/cv-ws2223/shared-data1/miniconda3/envs/mycvenv/bin/python`
 
 ### Recommended: vscode - IDE for working on pool machines
 
