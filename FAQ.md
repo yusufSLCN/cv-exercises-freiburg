@@ -5,11 +5,15 @@
 - Read the setup instructions linked on the website and follow the installation closely
 
 ### Regarding bashprofile and bashrc:
-- Problem: conda: Befehl nicht gefunden / Command not found
-- Actual problem: .bashrc is not sourced when logging in via ssh
-- see [bashrc-at-ssh-login](https://stackoverflow.com/questions/820517/bashrc-at-ssh-login)
-- Solution:
-- if .bash_profile does not exist next to your bash file then create it and paste the following
+
+- Problem: **conda: Befehl nicht gefunden / Command not found**
+- Check if you installed conda correctly as described in the setup
+- Check your bashrc file: `nano ~/.bashrc`
+  - Somewhere near the end you should find a block of code that starts with `# >>> conda initialize >>> ... `
+  - If not, try the installation again and make sure to say "yes" when being asked to initialize your bashrc.
+- If you find the code block in your bashrc, the problem is: .bashrc is not sourced when logging in via ssh (see [bashrc-at-ssh-login](https://stackoverflow.com/questions/820517/bashrc-at-ssh-login))
+- Solution: if `~/.bash_profile` does not exist, create it and paste the following
+
 ```
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
@@ -20,8 +24,8 @@ fi
 
 - work on pool pcs
 - copy to local via vscode (right click -> download)
-- scp
-- mout the shared-data1 directory on your local machine using sshfs
+- use scp
+- mount the shared-data1 directory on your local machine using sshfs
 
 ### Access denied / Password issues
 - Problem: login at [NextCloud](https://nc.informatik.uni-freiburg.de/index.php/apps/rainloop/) works but not when using ssh
@@ -44,26 +48,7 @@ fi
 
 ### use shared conda environment
 
-Your conda installation takes up a lot of space. In our case >5GB, which might exceed your storage quota. We share our environment `mycvenv` which is sufficient to run the example solutions.
-
-**Steps to use shared conda environment**:
-
-- Install miniconda as described in the setup pdf
-- edit your `~/.condarc` and add the following lines:
-
-```envs_dirs:
-  - /project/cv-ws2223/shared-data1/miniconda3/envs
-```
-- activate our environment: `conda activate mycvenv`
-- check if the output of  `which python` equals `/project/cv-ws2223/shared-data1/miniconda3/envs/mycvenv/bin/python`
-
-### use shared conda installation
-
-Run the following command to activate the shared conda installation. You can also add it to the end of your `~/.bashrc` file to activate the installation automatically.
-
-~~~bash
-eval "$('/project/cv-ws2223/lmb/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-~~~
+Currently we investigate whether this works. For now, create your own installation and environments in the project folder.
 
 ### Recommended: vscode - IDE for working on pool machines
 
