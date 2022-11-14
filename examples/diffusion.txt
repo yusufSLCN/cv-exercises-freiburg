@@ -1,0 +1,9 @@
+The example uses a jupyter notebook. Install the requirements:
+
+pip install jupyter pillow
+
+Run a notebook server from this folder:
+
+jupyter notebook
+
+This should open the browser window with jupyter. Select the notebook diffusion.ipynb.
