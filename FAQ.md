@@ -4,7 +4,7 @@
 
 - Read the setup instructions linked on the website and follow the installation closely
 
-### Regarding bashprofile and bashrc:
+## Problems with installing conda
 
 - Problem: **conda: Befehl nicht gefunden / Command not found**
 - Check if you installed conda correctly as described in the setup
@@ -20,18 +20,39 @@ if [ -f ~/.bashrc ]; then
 fi
 ```
 
-### Access data options
+## Torch does not find the GPU
+
+- On the tfpool install python 3.8 pytorch 1.13 cuda 11.6 (newer versions of cuda may not work)
+- On your own PC, update the drivers and keep installing older versions of pytorch and cuda
+until you find one that works.
+
+## Data access options
 
 - work on pool pcs
 - copy to local via vscode (right click -> download)
-- use scp
+- use scp to download data from the tf server to your local machine
 - mount the shared-data1 directory on your local machine using sshfs
 
+## Problems with TF pool
+
+- Check [TF pool FAQ](http://poolmgr.informatik.uni-freiburg.de/?id=103)
+
+### I have to input my password all the time
+
+Create an ssh key on your local PC to login to the login server and create another key
+on the login server to login to the pool PCs. [Tutorial](https://www.ssh.com/academy/ssh/keygen)
+
+- Use command `ssh-keygen` to create keys
+- Use command `ssh-copy-id` to copy keys to the target machines
+- Edit the file `~/ssh/config` to configure which server to use which key.
+
 ### Access denied / Password issues
+
 - Problem: login at [NextCloud](https://nc.informatik.uni-freiburg.de/index.php/apps/rainloop/) works but not when using ssh
 - Solution: do not use Umlauts (äöüß etc) in you password. Different encodings in the browser (setting the password) and terminal lead to different hashes
 
 ### Home folder exceeds 1GB
+
 - can lead to weird behaviour
 - you cannot create new files
 - list folder and file sizes in home: `cd ~`, `du --max-depth=1 -B M`
@@ -95,7 +116,8 @@ steps to install vs-code (on linux without sudo)
 
 ### Remote SSH in vscode directly to a pool machine
 
-Instead of connecting vscode to the login node via ssh and then connect in the terminal to one of the pool machines, one can directly connect via ssh to a pool machine as follows:
+Instead of connecting vscode to the login node via ssh and then connect in the terminal to one of
+the pool machines, one can directly connect via ssh to a pool machine as follows:
 - Crtl+shift+p: then Remote-SSH: Open SSH Configuration File and choose your loca config file.
 - Usually you will see an entry for every server like:
 ```
