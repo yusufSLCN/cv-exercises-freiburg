@@ -16,7 +16,7 @@ from lib.datasets.flow.sintel import SintelTest, SintelFullTrain
 from lib.flownet import FlowNetC, FlowNetS
 from lib.log import Logger
 from lib.metrics import compute_flow_metrics
-from lib.utils import load_model, load_all, get_checkpoint
+from lib.utils import load_model, load_all, get_checkpoint, sample_to_device
 
 PRINT_INTERVAL = 10
 LOG_INTERVAL = 20
@@ -173,17 +173,6 @@ def run_model(model, sample):
 def log_metrics(metrics, values, sample_idx):
     for k, v in values.items():
         metrics.loc[sample_idx, k] = v
-
-
-def sample_to_device(data, device):
-    if isinstance(data, dict):
-        return {key: sample_to_device(data[key], device) for key in data.keys()}
-    elif isinstance(data, (list, tuple)):
-        return [sample_to_device(val, device) for val in data]
-    elif isinstance(data, torch.Tensor):
-        return data.to(device=device)
-    else:
-        return data
 
 
 def print_info(args):

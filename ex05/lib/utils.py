@@ -8,6 +8,17 @@ import torch
 import torch.nn as nn
 
 
+def sample_to_device(data, device):
+    if isinstance(data, dict):
+        return {key: sample_to_device(data[key], device) for key in data.keys()}
+    elif isinstance(data, (list, tuple)):
+        return [sample_to_device(val, device) for val in data]
+    elif isinstance(data, torch.Tensor):
+        return data.to(device=device)
+    else:
+        return data
+
+
 def get_checkpoint(auto_restore: str):
     restore_map = pytoml.load(Path("models.toml").open("r", encoding="utf-8"))
     basepaths = restore_map.pop("basepaths")

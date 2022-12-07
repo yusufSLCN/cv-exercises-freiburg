@@ -15,7 +15,7 @@ from lib.datasets.flow.sintel import SintelTrain
 from lib.flownet import FlowNetC, FlowNetS
 from lib.log import Logger
 from lib.loss import FlowLoss, PhotometricLoss
-from lib.utils import TrainStateSaver, WeightsOnlySaver, get_checkpoint
+from lib.utils import TrainStateSaver, WeightsOnlySaver, get_checkpoint, sample_to_device
 
 PRINT_INTERVAL = 100
 LOG_INTERVAL = 5000
@@ -97,7 +97,7 @@ def train(args):
     while finished_iterations < max_iteration:
         epochs += 1
         for iter_in_epoch, sample in enumerate(dataloader):
-            sample = sample_to_cuda(sample)
+            sample = sample_to_device(sample, args.device)
 
             optimizer.zero_grad()
             model_output = run_model(model=model, sample=sample)
@@ -165,7 +165,8 @@ def setup_dataloader(args):
 
     aug_fct = setup_augmentation()
     dataloader = dataset_cls.init_as_loader(
-            batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers, pin_memory=True, drop_last=True, aug_fcts=aug_fct)
+            batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers, pin_memory=True,
+            drop_last=True, aug_fcts=aug_fct)
     return dataloader
 
 
@@ -242,17 +243,6 @@ def run_model(model, sample):
     model_output_dict = model(image_1, image_2)
 
     return model_output_dict
-
-
-def sample_to_cuda(data, device=None):
-    if isinstance(data, dict):
-        return {key: sample_to_cuda(data[key], device) for key in data.keys()}
-    elif isinstance(data, list):
-        return [sample_to_cuda(val, device) for val in data]
-    elif isinstance(data, torch.Tensor):
-        return data.cuda(device=device)
-    else:
-        return data
 
 
 def print_info(args):
