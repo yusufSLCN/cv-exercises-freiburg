@@ -76,6 +76,7 @@ class Corr:
             self.corr_block = UniformTorchCorr(padding_mode='zeros')
         else:
             print("Using CUDA correlation layer.\n")
+            # noinspection PyUnresolvedReferences
             from spatial_correlation_sampler import SpatialCorrelationSampler
             self.corr_block = SpatialCorrelationSampler(
                     kernel_size=1, patch_size=21, stride=1, padding=0, dilation=1, dilation_patch=2)

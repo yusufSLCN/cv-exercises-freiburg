@@ -101,9 +101,9 @@ class Dataset(TorchDataset, metaclass=abc.ABCMeta):
         if not self.init_seed:
             worker_info = torch.utils.data.get_worker_info()
             if worker_info is not None:
-                torch.manual_seed(worker_info.id_)
-                np.random.seed(worker_info.id_)
-                random.seed(worker_info.id_)
+                torch.manual_seed(worker_info.id)
+                np.random.seed(worker_info.id)
+                random.seed(worker_info.id)
                 self.init_seed = True
 
         sample_dict = sample.load(root=self.root)

@@ -1,11 +1,11 @@
 import os
 import os.path as osp
-from glob import glob
-
 import pickle
+from glob import glob
+from pathlib import Path
 
-from lib.datasets.dataset import Dataset, Sample
 from lib.datasets.IO import read
+from lib.datasets.dataset import Dataset, Sample
 
 
 class DataConf:
@@ -81,6 +81,7 @@ class FlyingThings3D(Dataset):
 
     def _init_samples_from_confs(self, sample_confs):
         sequences = sorted(glob(osp.join(self.root, '*/*[0-9]')))
+        sequences = [Path(s).as_posix() for s in sequences]
 
         for sample_conf in sample_confs:
             for sequence in sequences:

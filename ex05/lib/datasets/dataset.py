@@ -27,16 +27,13 @@ def _get_paths():
 def _get_path(*keys):
     paths = _get_paths()
     path = None
-
     for idx, key in enumerate(keys):
         if key in paths:
-            if key in paths and (
-                    isinstance(paths[key], str) or isinstance(paths[key], list)) and idx == len(
-                    keys) - 1:
+            if key in paths and (isinstance(paths[key], str) or isinstance(
+                    paths[key], list)) and idx == len(keys) - 1:
                 path = paths[key]
             else:
                 paths = paths[key]
-
     return path
 
 
