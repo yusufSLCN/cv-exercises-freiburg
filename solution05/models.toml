@@ -1,0 +1,13 @@
+[basepaths]
+    ft = "/project/cv-ws2223/shared-data1/OpticalFlowFinetunedModels"
+    pt = "/project/cv-ws2223/shared-data1/OpticalFlowPretrainedModels"
+[pt]
+    [pt.flownetc]
+        ckpt = 'flownet_c/checkpoint-model-iter-000600000.pt'
+    [pt.flownets]
+        ckpt = 'flownet_s/checkpoint-model-iter-000600000.pt'
+[ft]
+    [ft.flownets-sintel10k-sup]
+        ckpt = 'flownet_s_ftsintel10ksup/checkpoint-model-iter-000610000.pt'
+    [ft.flownets-sintel10k-photosmooth]
+        ckpt = 'flownet_s_ftsintel10kphotosmooth/checkpoint-model-iter-000610000.pt'
