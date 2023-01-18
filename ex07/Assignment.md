@@ -29,7 +29,7 @@ These scale and shift parameters can be recovered for nicer visualizations when 
 - On paper: solve for s,t from the alignment equation using linear least squares
     - Hint: see [yt](https://youtu.be/pKAPgUb4vL8?t=257)
     - Hint: see paper [MiDas-section4](https://arxiv.org/pdf/1907.01341v1.pdf), this also contains the solution h_opt
-- implement the solution in `compute_scale_and_shift`
+- implement the solution in `compute_scale_and_shift` in `visualize_pfm.py`
 - apply s,t to the prediction and visualize it as pointcloud again
 
 ## Task 3 - usecases of depth
