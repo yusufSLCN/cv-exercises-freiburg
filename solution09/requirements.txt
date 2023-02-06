@@ -1,0 +1,5 @@
+jupyter
+open3d
+scipy
+matplotlib
+
